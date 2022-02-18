@@ -11,7 +11,7 @@
  *
  */
 
-import Whop from "./whop";
+import Whop from './whop';
 import ApiClient from './ApiClient';
 import BanLicenseByKeyRequest from './model/BanLicenseByKeyRequest';
 import BanLicenseByKeyResponse from './model/BanLicenseByKeyResponse';
@@ -86,13 +86,13 @@ import ProductsApi from './api/ProductsApi';
 * @module index
 * @version 1.0.10
 */
-
 export {
     /**
      * The Whop constuctor.
      * @property {module:whop}
      */
     Whop,
+    
     /**
      * The ApiClient constructor.
      * @property {module:ApiClient}
