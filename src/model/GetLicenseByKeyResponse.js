@@ -16,7 +16,6 @@ import License from './License';
 import LicenseDiscord from './LicenseDiscord';
 import LicensePlan from './LicensePlan';
 import LicenseTwitter from './LicenseTwitter';
-import Metadata from './Metadata';
 
 /**
  * The GetLicenseByKeyResponse model module.
@@ -85,7 +84,7 @@ class GetLicenseByKeyResponse {
                 obj['banned'] = ApiClient.convertToType(data['banned'], 'Boolean');
             }
             if (data.hasOwnProperty('metadata')) {
-                obj['metadata'] = Metadata.constructFromObject(data['metadata']);
+                obj['metadata'] = ApiClient.convertToType(data['metadata'], Object);
             }
             if (data.hasOwnProperty('next_renewal_date')) {
                 obj['next_renewal_date'] = ApiClient.convertToType(data['next_renewal_date'], 'String');
@@ -166,7 +165,7 @@ GetLicenseByKeyResponse.prototype['quantity'] = undefined;
 GetLicenseByKeyResponse.prototype['banned'] = undefined;
 
 /**
- * @member {module:model/Metadata} metadata
+ * @member {Object} metadata
  */
 GetLicenseByKeyResponse.prototype['metadata'] = undefined;
 
@@ -248,7 +247,7 @@ License.prototype['quantity'] = undefined;
  */
 License.prototype['banned'] = undefined;
 /**
- * @member {module:model/Metadata} metadata
+ * @member {Object} metadata
  */
 License.prototype['metadata'] = undefined;
 /**

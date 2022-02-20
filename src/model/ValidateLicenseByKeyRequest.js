@@ -12,7 +12,6 @@
  */
 
 import ApiClient from '../ApiClient';
-import UpdateLicenseByKeyRequestMetadata from './UpdateLicenseByKeyRequestMetadata';
 
 /**
  * The ValidateLicenseByKeyRequest model module.
@@ -49,7 +48,7 @@ class ValidateLicenseByKeyRequest {
             obj = obj || new ValidateLicenseByKeyRequest();
 
             if (data.hasOwnProperty('metadata')) {
-                obj['metadata'] = UpdateLicenseByKeyRequestMetadata.constructFromObject(data['metadata']);
+                obj['metadata'] = ApiClient.convertToType(data['metadata'], Object);
             }
         }
         return obj;
@@ -59,7 +58,7 @@ class ValidateLicenseByKeyRequest {
 }
 
 /**
- * @member {module:model/UpdateLicenseByKeyRequestMetadata} metadata
+ * @member {Object} metadata
  */
 ValidateLicenseByKeyRequest.prototype['metadata'] = undefined;
 

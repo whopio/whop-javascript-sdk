@@ -13,7 +13,6 @@
 
 import Whop from './whop';
 import ApiClient from './ApiClient';
-import BanLicenseByKeyRequest from './model/BanLicenseByKeyRequest';
 import BanLicenseByKeyResponse from './model/BanLicenseByKeyResponse';
 import CheckoutLog from './model/CheckoutLog';
 import ConfirmProductRequest from './model/ConfirmProductRequest';
@@ -37,14 +36,11 @@ import LicenseDiscord from './model/LicenseDiscord';
 import LicensePlan from './model/LicensePlan';
 import LicenseTwitter from './model/LicenseTwitter';
 import Link from './model/Link';
-import Metadata from './model/Metadata';
 import Product from './model/Product';
-import ResetLicenseByKeyRequest from './model/ResetLicenseByKeyRequest';
 import ResetLicenseByKeyResponse from './model/ResetLicenseByKeyResponse';
 import SendPushNotificationRequest from './model/SendPushNotificationRequest';
 import SendPushNotificationResponse from './model/SendPushNotificationResponse';
 import UpdateLicenseByKeyRequest from './model/UpdateLicenseByKeyRequest';
-import UpdateLicenseByKeyRequestMetadata from './model/UpdateLicenseByKeyRequestMetadata';
 import UpdateLicenseByKeyResponse from './model/UpdateLicenseByKeyResponse';
 import ValidateLicenseByKeyRequest from './model/ValidateLicenseByKeyRequest';
 import ValidateLicenseByKeyResponse from './model/ValidateLicenseByKeyResponse';
@@ -98,12 +94,6 @@ export {
      * @property {module:ApiClient}
      */
     ApiClient,
-
-    /**
-     * The BanLicenseByKeyRequest model constructor.
-     * @property {module:model/BanLicenseByKeyRequest}
-     */
-    BanLicenseByKeyRequest,
 
     /**
      * The BanLicenseByKeyResponse model constructor.
@@ -244,22 +234,10 @@ export {
     Link,
 
     /**
-     * The Metadata model constructor.
-     * @property {module:model/Metadata}
-     */
-    Metadata,
-
-    /**
      * The Product model constructor.
      * @property {module:model/Product}
      */
     Product,
-
-    /**
-     * The ResetLicenseByKeyRequest model constructor.
-     * @property {module:model/ResetLicenseByKeyRequest}
-     */
-    ResetLicenseByKeyRequest,
 
     /**
      * The ResetLicenseByKeyResponse model constructor.
@@ -284,12 +262,6 @@ export {
      * @property {module:model/UpdateLicenseByKeyRequest}
      */
     UpdateLicenseByKeyRequest,
-
-    /**
-     * The UpdateLicenseByKeyRequestMetadata model constructor.
-     * @property {module:model/UpdateLicenseByKeyRequestMetadata}
-     */
-    UpdateLicenseByKeyRequestMetadata,
 
     /**
      * The UpdateLicenseByKeyResponse model constructor.

@@ -13,12 +13,10 @@
 
 
 import ApiClient from "../ApiClient";
-import BanLicenseByKeyRequest from '../model/BanLicenseByKeyRequest';
 import BanLicenseByKeyResponse from '../model/BanLicenseByKeyResponse';
 import ErrorResponse from '../model/ErrorResponse';
 import GetLicenseByKeyResponse from '../model/GetLicenseByKeyResponse';
 import GetLicensesResponse from '../model/GetLicensesResponse';
-import ResetLicenseByKeyRequest from '../model/ResetLicenseByKeyRequest';
 import ResetLicenseByKeyResponse from '../model/ResetLicenseByKeyResponse';
 import UpdateLicenseByKeyRequest from '../model/UpdateLicenseByKeyRequest';
 import UpdateLicenseByKeyResponse from '../model/UpdateLicenseByKeyResponse';
@@ -48,13 +46,10 @@ export default class LicensesApi {
     /**
      * Ban License
      * @param {String} key Key of the license you wish to ban.
-     * @param {Object} opts Optional parameters
-     * @param {module:model/BanLicenseByKeyRequest} opts.banLicenseByKeyRequest Details of license key metadata.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/BanLicenseByKeyResponse} and HTTP response
      */
-    banLicenseByKeyWithHttpInfo(key, opts) {
-      opts = opts || {};
-      let postBody = opts['banLicenseByKeyRequest'];
+    banLicenseByKeyWithHttpInfo(key) {
+      let postBody = null;
       // verify the required parameter 'key' is set
       if (key === undefined || key === null) {
         throw new Error("Missing the required parameter 'key' when calling banLicenseByKey");
@@ -71,7 +66,7 @@ export default class LicensesApi {
       };
 
       let authNames = ['Bearer'];
-      let contentTypes = ['application/json'];
+      let contentTypes = [];
       let accepts = ['application/json'];
       let returnType = BanLicenseByKeyResponse;
       return this.apiClient.callApi(
@@ -84,12 +79,10 @@ export default class LicensesApi {
     /**
      * Ban License
      * @param {String} key Key of the license you wish to ban.
-     * @param {Object} opts Optional parameters
-     * @param {module:model/BanLicenseByKeyRequest} opts.banLicenseByKeyRequest Details of license key metadata.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/BanLicenseByKeyResponse}
      */
-    banLicenseByKey(key, opts) {
-      return this.banLicenseByKeyWithHttpInfo(key, opts)
+    banLicenseByKey(key) {
+      return this.banLicenseByKeyWithHttpInfo(key)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -118,7 +111,7 @@ export default class LicensesApi {
       let formParams = {
       };
 
-      let authNames = ['Bearer'];
+      let authNames = ['Bearer', 'ClientID'];
       let contentTypes = [];
       let accepts = ['application/json'];
       let returnType = GetLicenseByKeyResponse;
@@ -199,13 +192,10 @@ export default class LicensesApi {
     /**
      * Reset License
      * @param {String} key Key of the license you wish to reset.
-     * @param {Object} opts Optional parameters
-     * @param {module:model/ResetLicenseByKeyRequest} opts.resetLicenseByKeyRequest Details of license key metadata.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ResetLicenseByKeyResponse} and HTTP response
      */
-    resetLicenseByKeyWithHttpInfo(key, opts) {
-      opts = opts || {};
-      let postBody = opts['resetLicenseByKeyRequest'];
+    resetLicenseByKeyWithHttpInfo(key) {
+      let postBody = null;
       // verify the required parameter 'key' is set
       if (key === undefined || key === null) {
         throw new Error("Missing the required parameter 'key' when calling resetLicenseByKey");
@@ -221,8 +211,8 @@ export default class LicensesApi {
       let formParams = {
       };
 
-      let authNames = ['Bearer'];
-      let contentTypes = ['application/json'];
+      let authNames = ['Bearer', 'ClientID'];
+      let contentTypes = [];
       let accepts = ['application/json'];
       let returnType = ResetLicenseByKeyResponse;
       return this.apiClient.callApi(
@@ -235,12 +225,10 @@ export default class LicensesApi {
     /**
      * Reset License
      * @param {String} key Key of the license you wish to reset.
-     * @param {Object} opts Optional parameters
-     * @param {module:model/ResetLicenseByKeyRequest} opts.resetLicenseByKeyRequest Details of license key metadata.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ResetLicenseByKeyResponse}
      */
-    resetLicenseByKey(key, opts) {
-      return this.resetLicenseByKeyWithHttpInfo(key, opts)
+    resetLicenseByKey(key) {
+      return this.resetLicenseByKeyWithHttpInfo(key)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -272,7 +260,7 @@ export default class LicensesApi {
       let formParams = {
       };
 
-      let authNames = ['Bearer'];
+      let authNames = ['Bearer', 'ClientID'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
       let returnType = UpdateLicenseByKeyResponse;
@@ -323,7 +311,7 @@ export default class LicensesApi {
       let formParams = {
       };
 
-      let authNames = ['Bearer'];
+      let authNames = ['Bearer', 'ClientID'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
       let returnType = ValidateLicenseByKeyResponse;

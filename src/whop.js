@@ -6,9 +6,14 @@ import LicensesApi from "./api/LicensesApi";
 import CheckoutLogsApi from "./api/CheckoutLogsApi";
 
 class Whop {
-  constructor(authToken) {
+  constructor({ bearer = undefined, clientID = undefined } = {}) {
     this.apiClient = new ApiClient();
-    this.apiClient.authentications["Bearer"]["accessToken"] = authToken;
+    if (bearer !== undefined) {
+      this.apiClient.authentications["Bearer"]["accessToken"] = bearer;
+    }
+    if (clientID !== undefined) {
+      this.apiClient.authentications["ClientID"]["apiKey"] = clientID;
+    }
   }
 
   // Fetch All Products
@@ -23,76 +28,76 @@ class Whop {
   }
   // Create Product
   createProduct(
+    title,
+    cancel_action,
+    expiration_days,
     initial_price,
     license_type,
     stock,
-    title,
     billing_period,
-    cancel_action,
-    expiration_days,
-    transferable,
     currency,
     custom_trial_period,
-    price
+    price,
+    transferable
   ) {
     var client = new ProductsApi(this.apiClient);
     var opts = {
       createProductRequest: {
+        title: title,
+        cancel_action: cancel_action,
+        expiration_days: expiration_days,
         initial_price: initial_price,
         license_type: license_type,
         stock: stock,
-        title: title,
         billing_period: billing_period,
-        cancel_action: cancel_action,
-        expiration_days: expiration_days,
-        transferable: transferable,
         currency: currency,
         custom_trial_period: custom_trial_period,
         price: price,
+        transferable: transferable,
       },
     };
     return client.createProduct(opts);
   }
   // Product Creation Confirmation
   confirmProduct(
-    cancel_action,
     currency,
-    expiration_days,
-    license_type,
+    stock,
     title,
     transferable,
     billing_period,
-    custom_trial_period,
+    cancel_action,
     initial_price,
+    license_type,
     price,
-    stock
+    custom_trial_period,
+    expiration_days
   ) {
     var client = new ProductsApi(this.apiClient);
     var opts = {
       confirmProductRequest: {
-        cancel_action: cancel_action,
         currency: currency,
-        expiration_days: expiration_days,
-        license_type: license_type,
+        stock: stock,
         title: title,
         transferable: transferable,
         billing_period: billing_period,
-        custom_trial_period: custom_trial_period,
+        cancel_action: cancel_action,
         initial_price: initial_price,
+        license_type: license_type,
         price: price,
-        stock: stock,
+        custom_trial_period: custom_trial_period,
+        expiration_days: expiration_days,
       },
     };
     return client.confirmProduct(opts);
   }
   // Send a push notification
-  sendPushNotification(body, link, title) {
+  sendPushNotification(link, title, body) {
     var client = new NotificationsApi(this.apiClient);
     var opts = {
       sendPushNotificationRequest: {
-        body: body,
         link: link,
         title: title,
+        body: body,
       },
     };
     return client.sendPushNotification(opts);
@@ -103,14 +108,14 @@ class Whop {
     return client.getLinks();
   }
   // Create Password Protected Link
-  createLink(password, product_id, stock, discord_ids) {
+  createLink(discord_ids, password, product_id, stock) {
     var client = new LinksApi(this.apiClient);
     var opts = {
       createLinkRequest: {
+        discord_ids: discord_ids,
         password: password,
         product_id: product_id,
         stock: stock,
-        discord_ids: discord_ids,
       },
     };
     return client.createLink(opts);
@@ -136,14 +141,9 @@ class Whop {
     return client.updateLicenseByKey(key, opts);
   }
   // Reset License
-  resetLicenseByKey(key, metadata) {
+  resetLicenseByKey(key) {
     var client = new LicensesApi(this.apiClient);
-    var opts = {
-      resetLicenseByKeyRequest: {
-        metadata: metadata,
-      },
-    };
-    return client.resetLicenseByKey(key, opts);
+    return client.resetLicenseByKey(key);
   }
   // Fetch All Licenses
   getLicenses() {
@@ -156,14 +156,9 @@ class Whop {
     return client.getLicenseByKey(key);
   }
   // Ban License
-  banLicenseByKey(key, metadata) {
+  banLicenseByKey(key) {
     var client = new LicensesApi(this.apiClient);
-    var opts = {
-      banLicenseByKeyRequest: {
-        metadata: metadata,
-      },
-    };
-    return client.banLicenseByKey(key, opts);
+    return client.banLicenseByKey(key);
   }
   // Fetch Checkout Logs
   getCheckoutLogs() {
@@ -172,24 +167,24 @@ class Whop {
   }
   // Add Checkout Log
   createCheckoutLog(
-    size,
-    status,
     website,
     image_url,
     key,
     price,
-    product_name
+    product_name,
+    size,
+    status
   ) {
     var client = new CheckoutLogsApi(this.apiClient);
     var opts = {
       createCheckoutLogRequest: {
-        size: size,
-        status: status,
         website: website,
         image_url: image_url,
         key: key,
         price: price,
         product_name: product_name,
+        size: size,
+        status: status,
       },
     };
     return client.createCheckoutLog(opts);
