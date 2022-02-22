@@ -9,6 +9,7 @@ npm i whopapi
 var WhopApi = require('whopapi');
 
 var whop = new WhopApi.Whop({bearer: "<Bearer Token>"});
+// var whop = new WhopApi.Whop({clientID: "<client ID>"})
 
 console.log(whop.getLinks());
 ```
