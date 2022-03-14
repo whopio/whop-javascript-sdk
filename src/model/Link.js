@@ -63,7 +63,7 @@ class Link {
                 obj['created_at'] = ApiClient.convertToType(data['created_at'], 'String');
             }
             if (data.hasOwnProperty('discord_ids')) {
-                obj['discord_ids'] = ApiClient.convertToType(data['discord_ids'], ['String']);
+                obj['discord_ids'] = ApiClient.convertToType(data['discord_ids'], 'String');
             }
             if (data.hasOwnProperty('hidden')) {
                 obj['hidden'] = ApiClient.convertToType(data['hidden'], 'Boolean');
@@ -101,7 +101,7 @@ Link.prototype['stock'] = undefined;
 Link.prototype['created_at'] = undefined;
 
 /**
- * @member {Array.<String>} discord_ids
+ * @member {String} discord_ids
  */
 Link.prototype['discord_ids'] = undefined;
 
